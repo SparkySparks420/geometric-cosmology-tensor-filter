@@ -1,20 +1,55 @@
 Geometric Cosmology Tensor Filter
+
+Project Motivation
+Cosmology today faces the challenge of explaining dark energy and dust without introducing arbitrary new fields. This project implements a purely geometric model where ΛCDM arises naturally from motion in a fifth dimension. Unlike traditional braneworld scenarios, this approach eliminates dark radiation and Weyl anisotropic stress, while predicting a distinctive Gaussian suppression of B‑mode polarization. The filter provided here allows researchers to test these predictions directly against upcoming CMB experiments such as LiteBIRD and the Simons Observatory.
+
 Unique Gaussian B-mode suppression from the model "ΛCDM from Motion in the Fifth Dimension: A Pure-Geometric Origin of Dust and Dark Energy" (arXiv:2512.xxxxx – Dec 2025)
 
-One-line install
+Installation
+You can install the package directly from PyPI:
+
+bash
 pip install geometric-cosmology
+Or install the latest version from GitHub:
 
-or from GitHub: pip install git+https://github.com/SparkySparks420/geometric-cosmology-tensor-filter.git
+bash
+pip install git+https://github.com/YOURUSERNAME/geometric-cosmology-tensor-filter.git
+Quick Test
+python
+from geometric_cosmology.filter import suppress_clbb
+import numpy as np
+import matplotlib.pyplot as plt
 
-Quick test
-from geometric_cosmology.filter import suppress_clbb import numpy as np import matplotlib.pyplot as plt
+ell = np.arange(2, 501)
+clbb = 1e-6 * (ell/100)**-2 * np.exp(-(ell/30)**2)
+clbb_sup = suppress_clbb(ell, clbb, alpha_over_lpl2=10.0)
 
-ell = np.arange(2, 501) clbb = 1e-6 * (ell/100)-2 * np.exp(-(ell/30)2) clbb_sup = suppress_clbb(ell, clbb, alpha_over_lpl2=10.0)
+plt.loglog(ell, clbb, '--', label='ΛCDM')
+plt.loglog(ell, clbb_sup, label='Geometric Model')
+plt.legend(); plt.show()
+This produces a direct comparison between the standard ΛCDM prediction and the geometric suppression model.
 
-plt.loglog(ell, clbb, '--', label='ΛCDM') plt.loglog(ell, clbb_sup, label='Geometric Model') plt.legend(); plt.show()
+How This Compares to Other Braneworld Models
+Model	Dark Radiation (C≠0)	Weyl anisotropic stress	B-mode suppression shape	Testable in next 5 years?
+Standard RS-II (fixed brane)	Yes (huge)	Large	None	Already ruled out
+Moving brane (Einstein only)	Yes	Large	None	Ruled out by Planck
+This model + GB	No (C=0)	Suppressed to zero	Gaussian exp(−k²/k_GB²)	YES — LiteBIRD/SO
+Key point: This is the only model with 
+𝐶
+=
+0
+ and 
+𝜋
+𝑊
+=
+0
+ that survives current constraints and remains testable with upcoming experiments.
 
-Citation request
-If you use this code, please cite: Andre Swart, arXiv:2512.xxxxx (2025)
+Citation Request
+If you use this code, please cite: Andre Swart, ΛCDM from Motion in the Fifth Dimension: A Pure-Geometric Origin of Dust and Dark Energy, arXiv:2512.xxxxx (2025)
+
+License
+MIT
 
 License
 MIT
