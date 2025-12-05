@@ -29,6 +29,11 @@ plt.loglog(ell, clbb_sup, label='Geometric Model')
 plt.legend(); plt.show()
 This produces a direct comparison between the standard ΛCDM prediction and the geometric suppression model.
 
+Note on the Quick Test
+The quick test provided above is only a sanity check to confirm that the package installs correctly and the filter runs without errors. Because it uses a toy baseline spectrum, the ΛCDM and suppressed curves may look very similar.
+
+The real difference appears when you apply the filter to actual CMB B‑mode spectra from simulations or experiments. With real data, the geometric model predicts a distinctive Gaussian suppression that upcoming missions like LiteBIRD and the Simons Observatory can test directly.
+
 How This Compares to Other Braneworld Models
 Model	Dark Radiation (C≠0)	Weyl anisotropic stress	B-mode suppression shape	Testable in next 5 years?
 Standard RS-II (fixed brane)	Yes (huge)	Large	None	Already ruled out
