@@ -1,22 +1,13 @@
-markdown
+Geometric Cosmology Tensor Filter The only model predicting a clean Gaussian suppression of primordial B-modes on ℓ < 40 — from pure geometry.  → "ΛCDM from Motion in the Fifth Dimension: A Pure-Geometric Origin of Dust and Dark Energy" (arXiv:2512.xxxxx – Dec 2025)Smoking GunWhy care? Standard braneworlds fail: excess dark radiation, Weyl stress kills structure formation.
+This model fixes it all—exact dust scaling, C=0, π_W=0—and predicts a unique Gaussian dip in primordial tensors.
+LiteBIRD/Simons Observatory/LISA: Plug in your data and test it today.
+One-Line Installbash
 
-# Geometric Cosmology Tensor Filter 🚀
-
-**The only model predicting a clean Gaussian suppression of primordial B-modes on ℓ < 40 — from pure geometry.**  
-
-→ *"ΛCDM from Motion in the Fifth Dimension: A Pure-Geometric Origin of Dust and Dark Energy"* (arXiv:2512.xxxxx – Dec 2025)
-
-![Smoking Gun](demo_bmodes.png)
-
-> **Why care?** Standard braneworlds fail: excess dark radiation, Weyl stress kills structure formation.  
-> This model fixes it all—exact dust scaling, C=0, π_W=0—**and** predicts a unique Gaussian dip in primordial tensors.  
-> LiteBIRD/Simons Observatory/LISA: Plug in your data and test it **today**.
-
-## One-Line Install
-```bash
 pip install geometric-cosmology
 
-(or latest from GitHub: pip install git+https://github.com/SparkySparks420/geometric-cosmology-tensor-filter.git)30-Second Demopython
+(or latest from GitHub: pip install git+https://github.com/SparkySparks420/geometric-cosmology-tensor-filter.git)
+
+30-Second Demopython
 
 from geometric_cosmology.filter import suppress_clbb
 import numpy as np, matplotlib.pyplot as plt
@@ -56,9 +47,6 @@ Gaussian exp(−k²/k_GB²)
 YES
 
 Key edge: Zero dark radiation + stabilized perturbations, with one unique, falsifiable signature.Citation RequestIf you use this code, cite:
-Andre Swart, ΛCDM from Motion in the Fifth Dimension: A Pure-Geometric Origin of Dust and Dark Energy, arXiv:2512.xxxxx (2025)LicenseMIT — Fork it, test it, extend it. Let's see if the universe is a moving membrane.Questions? Open an Issue. Collaboration welcome!
+Andre Swart, ΛCDM from Motion in the Fifth Dimension: A Pure-Geometric Origin of Dust and Dark Energy, (2025)LicenseMIT — Fork it, test it, extend it. Let's see if the universe is a moving membrane.Questions? Open an Issue. Collaboration welcome!
 — Andre Swart, December 2025
-
-
-
 
