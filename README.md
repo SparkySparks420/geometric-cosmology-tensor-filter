@@ -1,9 +1,12 @@
-Geometric Cosmology Tensor FilterThe only model predicting a clean Gaussian suppression of primordial B-modes on ℓ < 40 - from pure geometry."ΛCDM from Motion in the Fifth Dimension: A Pure-Geometric Origin of Dust and Dark Energy"
-(waiting for arXiv – Dec 2025)
+Geometric Cosmology Tensor Filter![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![arXiv](https://img.shields.io/badge/arXiv-2512.xxxxx-orange.svg)
+![GitHub stars](https://img.shields.io/github/stars/SparkySparks420/geometric-cosmology-tensor-filter?style=social)  The only model predicting a clean Gaussian suppression of primordial B-modes on ℓ < 40 - from pure geometry."ΛCDM from Motion in the Fifth Dimension: A Pure-Geometric Origin of Dust and Dark Energy"
+(waiting for arXiv - Dec 2025)
 Smoking GunWhy Care?Standard braneworlds fail:  Excess dark radiation  
 Weyl stress kills structure formation
 
-This model fixes it all with:  Exact dust scaling  
+This model fixes it all — with:  Exact dust scaling  
 C = 0  
 π_W = 0
 
@@ -71,10 +74,10 @@ Citation RequestIf you use this code, please cite:bibtex
   archivePrefix = {arXiv}
 }
 
-LicenseMIT - Fork it, test it, extend it.
+LicenseMIT — Fork it, test it, extend it.
 Let’s see if the universe is a moving membrane.Questions? Open an Issue.
 Collaboration welcome!
-- Andre Swart, December 2025
+— Andre Swart, December 2025
 Built with love, geometry, and a little bit of Gauss–Bonnet.
-https://x.com/GeometricCosmo
+@GeometricCosmo
 
