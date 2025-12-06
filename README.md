@@ -1,4 +1,5 @@
 Geometric Cosmology Tensor Filter
+![Smoking Gun](demo_bmodes.png)
 ![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![arXiv](https://img.shields.io/badge/arXiv-2512.xxxxx-orange.svg)
