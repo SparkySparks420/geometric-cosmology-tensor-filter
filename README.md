@@ -76,4 +76,5 @@ Let’s see if the universe is a moving membrane.Questions? Open an Issue.
 Collaboration welcome!
 - Andre Swart, December 2025
 Built with love, geometry, and a little bit of Gauss–Bonnet.
+https://x.com/GeometricCosmo
 
