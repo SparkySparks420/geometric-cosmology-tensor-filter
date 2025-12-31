@@ -1,0 +1,61 @@
+import numpy as np
+import camb
+import matplotlib.pyplot as plt
+
+# --- 1. Experimental Specifications for CMB-S4 ---
+f_sky = 0.4
+theta_fwhm = 1.0 * (np.pi / 180 / 60)  # 1 arcmin in radians
+sigma_T = 1.0 * (np.pi / 180 / 60)      # 1 muK-arcmin in muK-rad
+l_min, l_max = 30, 5000
+ls = np.arange(l_min, l_max + 1)
+
+def get_noise_spectrum(ls):
+    # White noise + Beam window function
+    beam_window = np.exp(ls*(ls+1) * theta_fwhm**2 / (8*np.log(2)))
+    return (sigma_T**2) * beam_window
+
+# --- 2. Theory Function ---
+def get_theory_cl(kc, p):
+    pars = camb.CAMBparams()
+    pars.set_cosmology(H0=67.36, ombh2=0.02237, omch2=0.1200)
+    pars.set_initial_power_function(lambda k: 2.1e-9 * (k/0.05)**(0.9649-1) * np.exp(-(k/kc)**p))
+    pars.set_for_lmax(l_max, lens_potential_accuracy=0)
+    results = camb.get_results(pars)
+    # Return raw Cl (not Dl) for Fisher calculation
+    return results.get_cmb_power_spectra(pars, CMB_unit='muK', raw_cl=True)['total'][ls, 0]
+
+# --- 3. Fisher Matrix Calculation ---
+def calculate_fisher(fiducial_params):
+    kc_fid, p_fid = fiducial_params
+    delta = 0.01  # 1% step for numerical derivatives
+    
+    # Get Fiducial Cls and Noise
+    cl_fid = get_theory_cl(kc_fid, p_fid)
+    nl = get_noise_spectrum(ls)
+    
+    # Calculate Numerical Derivatives (Finite Difference)
+    dCl_dkc = (get_theory_cl(kc_fid*(1+delta), p_fid) - get_theory_cl(kc_fid*(1-delta), p_fid)) / (2 * delta * kc_fid)
+    dCl_dp = (get_theory_cl(kc_fid, p_fid*(1+delta)) - get_theory_cl(kc_fid, p_fid*(1-delta))) / (2 * delta * p_fid)
+    
+    derivatives = [dCl_dkc, dCl_dp]
+    fisher = np.zeros((2, 2))
+    
+    # Sum over multipoles l
+    prefactor = f_sky * (2*ls + 1) / 2.0
+    for i in range(2):
+        for j in range(2):
+            fisher[i, j] = np.sum(prefactor * (1.0 / (cl_fid + nl)**2) * derivatives[i] * derivatives[j])
+            
+    return fisher
+
+# --- 4. Results ---
+fiducial = [0.1, 2.0] # kc in Mpc^-1, p index
+F = calculate_fisher(fiducial)
+cov = np.linalg.inv(F)
+
+sigma_kc = np.sqrt(cov[0, 0])
+sigma_p = np.sqrt(cov[1, 1])
+
+print(f"CMB-S4 Projected Sensitivity:")
+print(f"sigma(kc) = {sigma_kc:.6f} Mpc^-1 (Rel. error: {100*sigma_kc/fiducial[0]:.2f}%)")
+print(f"sigma(p)  = {sigma_p:.4f} (Rel. error: {100*sigma_p/fiducial[1]:.2f}%)")
