@@ -1,0 +1,14 @@
+# Sketch: compute C_ell with leakage modifier (uses CAMB)
+import numpy as np
+import camb
+from camb import model, initialpower
+# 1) set cosmology (Planck best-fit)
+pars = camb.CAMBparams()
+pars.set_cosmology(H0=67.36, ombh2=0.02237, omch2=0.1200)
+pars.InitPower.set_params(As=2.1e-9, ns=0.9649)
+pars.set_for_lmax(4000, lens_potential_accuracy=0)
+results = camb.get_results(pars)
+# 2) get transfer functions Delta_l^T(k) on k grid (use results.get_transfer_functions)
+# 3) define T(k) = exp[-(k/kc)**p]
+# 4) integrate C_ell = \int dk/k P_phi(k) T(k) |Delta_l(k)|^2
+# 5) compare to bandpowers and compute chi2; sample (kc,p) with emcee or nested sampler
